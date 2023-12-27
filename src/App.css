@@ -1,38 +1,296 @@
 .App {
-  text-align: center;
+    padding: 60px 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Heading {
+    text-align: center;
+    font-size: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Topics {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Topic {
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 12px;
+    padding: 25px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.Levels {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    max-width: 400px;
+    margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Level {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.Level.Beginner {
+    border: 1px solid #6FCF97;
+    color: #6FCF97;
+    background: rgba(111, 207, 151, 0.3);
+}
+
+.Level.Intermediate {
+    border: 1px solid #3498DB;
+    color: #3498DB;
+    background: rgba(52, 152, 219, 0.3);
+}
+
+.Level.Advanced {
+    border: 1px solid #FF6B6B;
+    color: #FF6B6B;
+    background: rgba(255, 107, 107, 0.3);
+}
+
+.QuizContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    overflow: scroll;
+    padding: 20px;
+    z-index: 9;
+}
+
+.QuizTopBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0 35px;
+    font-size: 14px;
+    font-weight: 500;
+    max-width: 400px;
+    margin: auto;
+}
+
+.ProgressBar {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.ConfirmAnswerButton,
+.PlayAgainButton {
+    background: #DDA0DD;
+    display: block;
+    margin: 20px auto;
+    width: 100px;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.QuestionCards {
+    max-width: 400px;
+    margin: auto;
+}
+
+.QuestionCard {
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    padding: 25px 20px;
+}
+
+.QuestionCardTopic {
+    color: #9d9d9d;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.Question {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.AnswersContainer {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Answer {
+    border: 2px solid #efefef;
+    border-radius: 12px;
+    padding: 15px;
+    font-weight: 400;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.Answer.isSelected {
+    border: 2px solid #DDA0DD;
+    background: rgba(221, 160, 221, .1);
+}
+
+.Answer.isSelected.isWrong {
+    border-color: #FF6B6B;
+    background: rgba(255, 107, 107, 0.3);
+}
+
+.Answer.isCorrect {
+    background: rgba(111, 207, 151, 0.3);
+    border-color: #6FCF97;
+}
+
+.Answer.isWrong, .Answer.isCorrect, .ConfirmAnswerButton.Clicked {
+    pointer-events: none;
+}
+
+.ProgressBarItem.current,
+.ProgressBarItem.answered {
+    color: #fff;
+    background: #DDA0DD;
+}
+
+.ProgressBarItem img {
+    max-width: 16px;
+    height: auto;
+}
+
+.ProgressBarItem {
+    border-radius: 50%;
+    color: #DDA0DD;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 24px;
+    min-height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #DDA0DD;
+    text-align: center;
+    line-height: 13px;
+}
+
+.SkipQuestionButton, .CloseQuizButton {
+    cursor: pointer;
+}
+
+.LoaderContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ScoreContainer {
+
+    margin: 60px auto;
+    position: relative;
+}
+
+.ScoreWrapper {
+    color: #DDA0DD;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 110px;
+    padding: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 10px solid #dda0dd69;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 2;
+    position: relative;
+    margin: auto;
+}
+
+.ScoreContainer:before {
+    content: '';
+    width: 230px;
+    height: 230px;
+    position: absolute;
+    top: 50%;
+    background: #dda0dd42;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.Score {
+    font-weight: 900;
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.ResultsBreakdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    max-width: 600px;
+    margin: auto;
+}
+
+.ResultsBreakdownItem {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (min-width: 530px) {
+
+    .Topics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (min-width: 900px) {
+
+    .Topics {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .Topics {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
 }
