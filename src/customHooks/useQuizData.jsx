@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLevel, selectTopic } from '../store/slices/quizSlice';
 import generateQuestions from '../api/fetchQuiz';
-import {startTimer} from "../store/slices/timerSlice";
 
 export const useQuizData = () => {
     const [loading, setLoading] = useState(true);
