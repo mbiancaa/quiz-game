@@ -1,8 +1,8 @@
 import Topics from "../Topics/Topics";
 import Levels from "../Levels/Levels";
-import QuizContainer from "./QuizContainer";
 import { useSelector } from "react-redux";
 import { selectLevel, selectTopic } from "../../store/slices/quizSlice";
+import QuizPage from "./QuizPage";
 
 const QuizStarter = () => {
 
@@ -12,7 +12,7 @@ const QuizStarter = () => {
     return (
         <>
             {topic && level ? (
-                <QuizContainer />
+                <QuizPage />
             ) : topic ? (
                 <Levels />
             ) : (

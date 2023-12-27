@@ -1,11 +1,12 @@
 import CloseQuizButton from "./CloseQuizButton";
 import SkipQuestionButton from "../Question/SkipQuestionButton";
 
-const QuizTopBar = () => {
+const QuizTopBar = (props) => {
 
+    const { timer } = props;
     return (
         <div className="QuizTopBar">
-            <CloseQuizButton />
+            <CloseQuizButton timer={timer}/>
             <SkipQuestionButton />
         </div>
     )

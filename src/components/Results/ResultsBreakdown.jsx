@@ -4,11 +4,14 @@ import {
     selectNumberOfCorrectAnswers,
     selectNumberOfWrongAnswers
 } from "../../store/slices/quizSlice";
+import { selectSeconds } from "../../store/slices/timerSlice";
+import { formatTime } from "../../helpers/formatTime";
 
 const ResultsBreakdown = () => {
 
     const correctAnswers = useSelector(selectNumberOfCorrectAnswers);
     const wrongAnswers = useSelector(selectNumberOfWrongAnswers);
+    const seconds = useSelector(selectSeconds);
 
     return (
         <div className={`ResultsBreakdown`}>
@@ -17,7 +20,7 @@ const ResultsBreakdown = () => {
                 <span>Total Questions</span>
             </div>
             <div className={`ResultsBreakdownItem`}>
-                <span>10</span>
+                <span>{formatTime(seconds)}</span>
                 <span>Time Completion</span>
             </div>
             <div className={`ResultsBreakdownItem`}>

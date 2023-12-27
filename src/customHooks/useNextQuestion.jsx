@@ -7,7 +7,7 @@ import {
 } from "../store/slices/quizSlice";
 import { QUESTIONS_NUMBER } from "../api/apiConfig";
 
-export const useSkipQuestion = () => {
+export const useNextQuestion = () => {
     const dispatch = useDispatch();
     const currentQuestion = useSelector(selectCurrentQuestion);
     const correctAnswers = useSelector(selectCorrectAnswers);

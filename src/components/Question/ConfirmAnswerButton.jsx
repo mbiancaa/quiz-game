@@ -5,9 +5,11 @@ import {
     selectCurrentQuestion,
     confirmSelectedAnswer,
     setCurrentAnswer,
-    setCurrentQuestion,
-    selectCorrectAnswer, pushCorrectAnswer, pushWrongAnswer
+    selectCorrectAnswer,
+    pushCorrectAnswer,
+    pushWrongAnswer
 } from "../../store/slices/quizSlice";
+import { useNextQuestion } from "../../customHooks/useNextQuestion";
 
 const ConfirmAnswerButton = () => {
 
@@ -16,7 +18,7 @@ const ConfirmAnswerButton = () => {
     const currentAnswer = useSelector(selectCurrentAnswer);
     const correctAnswer = useSelector(selectCorrectAnswer);
     const [buttonConfirmationClass, setButtonConfirmationClass] = useState('');
-
+    const nextQuestion = useNextQuestion();
     const confirmAnswer = () => {
 
         if (!currentAnswer) {
@@ -35,9 +37,9 @@ const ConfirmAnswerButton = () => {
 
         setTimeout(() => {
             dispatch(setCurrentAnswer(''));
-            dispatch(setCurrentQuestion(currentQuestion + 1));
+            nextQuestion();
             setButtonConfirmationClass('');
-        }, 3000);
+        }, 2000);
 
     }
 

@@ -1,17 +1,18 @@
 const patternForQuestion = /Question (\d+): (.*?)(?=(Question \d+|$))/g;
 const patternForAnswers = /[A-D]\. (.*?)(?=(?:\s*[A-D]\.|Correct answer:|$))/g;
 const patternForCorrectAnswer = /Correct answer: ([A-D])\./;
+//TODO :: fix correct answers formatting, it throws err sometimes
 export default function parseQuestions(text) {
     let match;
     const questions = {};
     text = text.replaceAll('\n', '');
-    console.log(text);
+    // console.log(text);
     while ((match = patternForQuestion.exec(text)) !== null) {
         const questionNumber = match[1];
         const questionText = match[2];
         questions[`Question ${questionNumber}`] = extractQuestionData(questionText.trim());
     }
-    console.log(questions);
+    // console.log(questions);
     return questions;
 }
 function extractQuestionData(questionText) {

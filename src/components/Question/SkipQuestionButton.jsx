@@ -1,8 +1,8 @@
-import { useSkipQuestion } from "../../customHooks/useSkipQuestion";
+import { useNextQuestion } from "../../customHooks/useNextQuestion";
 
 const SkipQuestionButton = () => {
 
-    const skipThisQuestion = useSkipQuestion();
+    const skipThisQuestion = useNextQuestion();
 
     return (
         <div

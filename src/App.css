@@ -1,10 +1,22 @@
+body {
+    background: #1f1147;
+    color: #fff;
+}
+
 .App {
-    padding: 60px 15px;
+    padding: 50px 15px;
 }
 
 .Heading {
     text-align: center;
     font-size: 2em;
+    margin: 0 auto;
+}
+
+.MiniHeading {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px auto 30px;
 }
 
 .Topics {
@@ -15,7 +27,7 @@
 }
 
 .Topic {
-    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    box-shadow: 0 3px 12px rgba(0,0,0,.26);
     border-radius: 12px;
     padding: 25px 15px;
     display: flex;
@@ -24,6 +36,7 @@
     text-align: center;
     font-weight: 600;
     cursor: pointer;
+    background: #6949fd;
 }
 
 .Levels {
@@ -31,7 +44,7 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 25px;
     max-width: 400px;
-    margin: auto;
+    margin: 50px auto;
 }
 
 .Level {
@@ -39,7 +52,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    box-shadow: 0 3px 12px rgba(0,0,0,.26);
     border-radius: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -95,7 +108,7 @@
 
 .ConfirmAnswerButton,
 .PlayAgainButton {
-    background: #DDA0DD;
+    background: #6949fd;
     display: block;
     margin: 20px auto;
     width: 100px;
@@ -115,12 +128,14 @@
 
 .QuestionCard {
     border-radius: 20px;
-    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    box-shadow: 0 3px 12px rgba(0,0,0,.26);
     padding: 25px 20px;
+    background: #361e70;
 }
 
 .QuestionCardTopic {
-    color: #9d9d9d;
+    /*color: #9d9d9d;*/
+    color: #7560a3;
     font-weight: 500;
     font-size: 13px;
     margin-bottom: 10px;
@@ -140,7 +155,8 @@
 }
 
 .Answer {
-    border: 2px solid #efefef;
+    /*border: 2px solid #efefef;*/
+    border: 2px solid #7560a3;
     border-radius: 12px;
     padding: 15px;
     font-weight: 400;
@@ -149,8 +165,8 @@
 }
 
 .Answer.isSelected {
-    border: 2px solid #DDA0DD;
-    background: rgba(221, 160, 221, .1);
+    border: 2px solid #6949fd;
+    background: #6949fd99;
 }
 
 .Answer.isSelected.isWrong {
@@ -170,7 +186,7 @@
 .ProgressBarItem.current,
 .ProgressBarItem.answered {
     color: #fff;
-    background: #DDA0DD;
+    background: #6949fd;
 }
 
 .ProgressBarItem img {
@@ -180,7 +196,7 @@
 
 .ProgressBarItem {
     border-radius: 50%;
-    color: #DDA0DD;
+    color: #6949fd;
     font-size: 13px;
     font-weight: 500;
     min-width: 24px;
@@ -188,7 +204,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #DDA0DD;
+    border: 1px solid #6949fd;
     text-align: center;
     line-height: 13px;
 }
@@ -215,7 +231,7 @@
 }
 
 .ScoreWrapper {
-    color: #DDA0DD;
+    color: #6949fd;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -226,7 +242,7 @@
     padding: 20px;
     border-radius: 50%;
     background: #fff;
-    border: 10px solid #dda0dd69;
+    border: 10px solid #6949fd69;
     font-size: 13px;
     font-weight: 500;
     z-index: 2;
@@ -240,7 +256,7 @@
     height: 230px;
     position: absolute;
     top: 50%;
-    background: #dda0dd42;
+    background: #6949fd42;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
@@ -258,8 +274,12 @@
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 3px 6px rgba(0,0,0,.16);
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
+    background: #fff;
+    color: #361e70;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .ResultsBreakdownItem {

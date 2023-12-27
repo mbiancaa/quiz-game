@@ -19,6 +19,7 @@ const timerSlice = createSlice({
             state.seconds += 1;
         },
         resetTimer: (state) => {
+            state.isRunning = initialState.isRunning;
             state.seconds = initialState.seconds;
         }
     },
@@ -31,4 +32,5 @@ export const {
     resetTimer
 } = timerSlice.actions;
 export const selectTimer = (state) => state.timer;
+export const selectSeconds = (state) => state.timer.seconds;
 export default timerSlice.reducer;

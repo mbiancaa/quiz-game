@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { selectLevel, selectTopic } from '../store/slices/quizSlice';
 import generateQuestions from '../api/fetchQuiz';
 
-export const useQuizData = () => {
+export const useQuizData = (timer) => {
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
     const topic = useSelector(selectTopic);
     const level = useSelector(selectLevel);
     const [quiz, setQuiz] = useState({});
@@ -14,16 +15,16 @@ export const useQuizData = () => {
             try {
                 const data = await generateQuestions(topic, level);
                 setQuiz(data);
-                console.log(data);
+                timer.start();
+                // console.log(data);
             } catch (error) {
-                console.error('Error fetching quiz:', error);
+                setError(error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchQuizData();
     }, [topic, level]);
 
-    return { loading, quiz };
+    return { loading, quiz, error };
 };

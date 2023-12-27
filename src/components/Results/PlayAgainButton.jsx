@@ -2,13 +2,19 @@ import { useDispatch } from "react-redux";
 import { resetState } from "../../store/slices/quizSlice";
 
 
-const PlayAgainButton = () => {
+const PlayAgainButton = (props) => {
 
     const dispatch = useDispatch();
+    const { timer } = props;
+    const playAgain = () => {
+        dispatch(resetState())
+        timer.reset();
+    }
+
     return (
         <div
             className={`PlayAgainButton`}
-            onClick={() => dispatch(resetState())}
+            onClick={playAgain}
         >
             Play Again
         </div>
